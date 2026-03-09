@@ -10,19 +10,24 @@ package pack.modelos;
  */
 public abstract class Envio {
 
-    String idSeguimiento;
-    double peso;
-    String destino;
+    protected String idSeguimiento;
+    protected double peso;
+    protected Direccion destino;
 
-    String[] historialParadas = new String[3];
+    public String[] historialParadas = new String[3];
 
-    public Envio(String idSeguimiento, double peso, String destino) {
+    public Envio(String idSeguimiento, double peso, Direccion destino) {
         this.idSeguimiento = idSeguimiento;
         this.peso = peso;
         this.destino = destino;
+        historialParadas = new String [3];
+        historialParadas[0] ="Sin registro";
+        historialParadas[1] ="Sin registro";
+        historialParadas[2] ="Sin registro";
+        
         
     }
-
+    public String[] getHistorialParadas()
     public  calcularPrecioFinal();
 
     /**

@@ -24,5 +24,9 @@ public class Direccion {
     public String toString() {
         return calle + " " + codigoPostal + " " + ciudad;
     }
+    
+    public String getCiudad() {
+        return ciudad;
+    }
 
 }

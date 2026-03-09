@@ -10,40 +10,30 @@ package pack.modelos;
  */
 public class Paquete extends Envio {
 
-    double volumen;
-    private double precioFinal;
+    private double volumen;
+    
 
-    public Paquete(String idSeguimiento, double peso, double volumen) {
-        super(idSeguimiento, peso);
-        this.volumen = volumen;
+    public Paquete(String idSeguimiento, double peso, Direccion destino) {
+        super(idSeguimiento, peso, destino);
+        
     }
 
     @Override
     public void calcularPrecioFinal() {
-        int precioBase = 5;
-        double primerPrecio = 0;
-
-        if (peso > 5) {
-            primerPrecio = precioBase + (peso - 5) * 2;
-
-        } else if (peso < 5) {
-            primerPrecio = precioBase;
-
-        }
-        if (volumen > 1) {
-            precioFinal = primerPrecio + 10;
-            System.out.println("El precio final es:" + precioFinal);
-        } else if (volumen < 1) {
-            precioFinal = primerPrecio;
-            System.out.println("El precio final es:" + precioFinal);
-        }
-
+        double precioBase =5.0;
+        double precio = precioBase;
+        if (peso >5)
+            precio += (peso - 5) * 2.0;
+        
+        if (volumen > 1)
+            precio +=10.0;
+        
+        return(precio);
+         
     }
 
-    public double calcularSeguro(double valorMercancia) {
-        double precioFinalConSeguro;
-        precioFinalConSeguro = precioFinal * 3 / 100;
-        return precioFinalConSeguro;
-
+    @Override
+    public double calcularSeguro (double valorMercancia) {
+        return valorMercancia * 0.03;
     }
 }

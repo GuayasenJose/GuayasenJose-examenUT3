@@ -10,28 +10,24 @@ package pack.modelos;
  */
 public class Sobre extends Envio {
 
-    boolean esAcolchado;
+    private boolean esAcolchado;
 
-    public Sobre(String idSeguimiento, double peso, boolean esAcolchado) {
-        super(idSeguimiento, peso);
-        this.esAcolchado = esAcolchado;
+    public Sobre(String idSeguimiento, double peso, Direccion destino) {
+        super(idSeguimiento, peso, destino);
+        
     }
 
     @Override
-    public void calcularPrecioFinal() {
-        int precioBase = 2;
-        double primerPrecio = 0;
-        double precioFinal;
-        if (esAcolchado = true) {
-            primerPrecio = precioBase + 1.5;
-
-        } else if (peso < 5) {
-            primerPrecio = precioBase;
-
+    public double calcularPrecioFinal() {
+        double precio = 2.0;
+        
+        if (esAcolchado)  {
+            precio += 1.5;
         }
-        if (ciudad = Las Palmas){
-
+        
+        if (destino.getCiudad() .equalsIgnoreCase("Las Palmas")) {
+            precio -= 0.5;
         }
-
+        return precio;
     }
 }
